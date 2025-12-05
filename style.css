@@ -1,0 +1,212 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif SC', serif;
+    min-height: 100vh;
+    color: #444;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 600px;
+    padding: 40px 10px; /* 减小内边距适应手机 */
+}
+
+/* === 卡片通用样式 === */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75); /* 增加一点不透明度 */
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+h2 {
+    color: #d63384;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.tip {
+    font-size: 0.75rem;
+    color: #888;
+    margin: 5px 0 15px 0;
+}
+
+/* === 音乐按钮 === */
+.music-floating-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+    .music-floating-btn.playing {
+        animation: rotate 3s linear infinite;
+        background: #ff758c;
+        color: white;
+    }
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* === 计时器 === */
+#clock {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #d63031;
+    font-family: 'Zcool XiaoWei', serif;
+    margin-top: 10px;
+}
+
+/* === 图片展示优化 === */
+.photo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.memory-card {
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+    .memory-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+
+.memory-date {
+    font-size: 0.7rem;
+    color: #999;
+    text-align: right;
+}
+
+/* === 输入框与按钮 === */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+input[type="text"], textarea {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    background: rgba(255,255,255,0.8);
+}
+
+button {
+    background: #ff758c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* === 画板修复 (关键) === */
+.canvas-wrapper {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%; /* 宽度自适应 */
+    max-width: 300px;
+    height: 300px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    /* 禁止触摸时的页面滚动 */
+    touch-action: none;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+/* 其他列表样式 */
+.todo-list, .note-list {
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.todo-item, .note-item {
+    padding: 8px;
+    background: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+    border-radius: 8px;
+    position: relative;
+}
+
+    .todo-item.done span {
+        text-decoration: line-through;
+        color: #aaa;
+    }
+
+.delete-btn {
+    position: absolute;
+    right: 10px;
+    color: red;
+    cursor: pointer;
+}
+
+.heart-beat {
+    font-size: 3rem;
+    animation: beat 1.2s infinite;
+    text-align: center;
+}
+
+@keyframes beat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我们的恋爱空间</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zcool+XiaoWei&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.0/dist/av-min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+    
+    <div class="music-floating-btn" onclick="toggleAudio()">
+        <div id="music-icon">🎵</div>
+    </div>
+
+    <div class="main-container">
+        <header>
+            <div class="heart-beat">❤️</div>
+            <h1>Love Space</h1>
+        </header>
+        
+        <section class="glass-card timer-section">
+            <p>我们已经相爱了</p>
+            <div id="clock">正在计算时间...</div>
+            <p id="start-date-display" style="font-size: 0.8rem; color: #888; margin-top: 5px;"></p>
+        </section>
+
+        <section class="glass-card gallery-section">
+            <h2>📸 甜蜜瞬间</h2>
+            <p class="tip">记录每一个重要的日子</p>
+            
+            <div class="upload-area">
+                <input type="file" id="memory-file" accept="image/*" style="display:none;" onchange="previewImage(this)">
+                <button onclick="document.getElementById('memory-file').click()" style="background:#a29bfe">1. 选择照片 🖼️</button>
+                
+                <div id="img-preview-box" style="margin: 10px 0; display:none;">
+                    <img id="img-preview" src="" style="width: 100%; height: auto; border-radius: 10px;">
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="memory-text" placeholder="写下这一刻的想法...">
+                    <button onclick="addMemory()">上传纪念 💾</button>
+                </div>
+            </div>
+
+            <div id="memory-list" class="photo-grid">
+                <p style="font-size:12px; color:#aaa;">正在连接云端回忆...</p>
+            </div>
+        </section>
+
+        <section class="glass-card todo-section">
+            <h2>📜 一起想做的100件小事</h2>
+            <div class="input-group">
+                <input type="text" id="todo-input" placeholder="添加一个新的愿望...">
+                <button onclick="addTodo()">许愿 ✨</button>
+            </div>
+            <div id="todo-list" class="todo-list"></div>
+        </section>
+
+        <section class="glass-card draw-section">
+            <h2>🎨 灵魂画手</h2>
+            <p class="tip">在下方空白处尽情创作吧</p>
+            <div class="canvas-wrapper">
+                <canvas id="love-canvas"></canvas>
+            </div>
+            <div class="canvas-tools">
+                <button onclick="clearCanvas()" style="background:#ff7675">重画</button>
+                <input type="color" id="color-picker" value="#000000">
+                <button onclick="saveDrawing()" style="background:#74b9ff">发送</button>
+            </div>
+            <div id="latest-drawing" class="latest-drawing">
+                <h3>👇 最新的画作 👇</h3>
+                <img id="drawing-img" src="" alt="暂无画作" style="display:none;">
+            </div>
+        </section>
+
+        <section class="glass-card message-section">
+            <h2>📝 碎碎念</h2>
+            <div class="input-group">
+                <textarea id="note-input" placeholder="今天想说..."></textarea>
+                <button onclick="addNote()">发送</button>
+            </div>
+            <div id="note-list" class="note-list"></div>
+        </section>
+
+        <footer>© 2025 Love Story</footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
